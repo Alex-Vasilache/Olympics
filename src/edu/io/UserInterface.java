@@ -2,7 +2,7 @@ package edu.io;
 
 import edu.kit.informatik.Terminal;
 import edu.logic.Splitter;
-import edu.objects.OlympicSystem;
+import edu.objects.ArchiveSystem;
 
 public class UserInterface {
 
@@ -13,7 +13,7 @@ public class UserInterface {
 	 */
 	public static void main(String[] args) {
 
-		while (OlympicSystem.isEnd() == false) {
+		while (ArchiveSystem.isEnd() == false) {
 			Splitter.split(Terminal.readLine());
 		}
 	}

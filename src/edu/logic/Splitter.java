@@ -2,7 +2,7 @@ package edu.logic;
 
 import edu.io.Print;
 import edu.kit.informatik.Terminal;
-import edu.objects.OlympicSystem;
+import edu.objects.ArchiveSystem;
 
 public class Splitter {
 
@@ -67,7 +67,7 @@ public class Splitter {
 			break;
 		}
 		case "quit": {
-			OlympicSystem.setEnd(true);
+			ArchiveSystem.setEnd(true);
 			break;
 		}
 		default:
