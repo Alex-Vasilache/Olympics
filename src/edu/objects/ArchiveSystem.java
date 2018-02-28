@@ -9,6 +9,8 @@ public class ArchiveSystem {
     private static boolean adminOnline = false;
     private static List<Admin> admins = new ArrayList<Admin>();
     private static List<SportVenue> venues = new ArrayList<SportVenue>();
+    private static List<Sport> sports = new ArrayList<Sport>();
+    private static List<IocCode> iocCodes = new ArrayList<IocCode>();
 
     public static boolean isEnd() {
         return end;
@@ -32,5 +34,13 @@ public class ArchiveSystem {
 
     public static List<SportVenue> getVenues() {
         return venues;
+    }
+
+    public static List<Sport> getSports() {
+        return sports;
+    }
+
+    public static List<IocCode> getIocCodes() {
+        return iocCodes;
     }
 }
