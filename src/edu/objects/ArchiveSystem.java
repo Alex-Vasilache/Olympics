@@ -11,6 +11,8 @@ public class ArchiveSystem {
     private static List<SportVenue> venues = new ArrayList<SportVenue>();
     private static List<Sport> sports = new ArrayList<Sport>();
     private static List<IocCode> iocCodes = new ArrayList<IocCode>();
+    private static List<Athlete> athletes = new ArrayList<Athlete>();
+    private static List<Competition> competitions = new ArrayList<Competition>();
 
     public static boolean isEnd() {
         return end;
@@ -42,5 +44,13 @@ public class ArchiveSystem {
 
     public static List<IocCode> getIocCodes() {
         return iocCodes;
+    }
+
+    public static List<Athlete> getAthletes() {
+        return athletes;
+    }
+
+    public static List<Competition> getCompetitions() {
+        return competitions;
     }
 }
