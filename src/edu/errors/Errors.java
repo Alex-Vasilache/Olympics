@@ -7,6 +7,13 @@ import edu.objects.Sport;
 
 public class Errors {
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean addAdmin(String input) {
 
         String[] inputParts = input.split(" ");
@@ -48,6 +55,13 @@ public class Errors {
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean loginAdmin(String input) {
         if (ArchiveSystem.isAdminOnline()) {
             Terminal.printError("an admin is already logged in!");
@@ -87,6 +101,13 @@ public class Errors {
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean logoutAdmin(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");
@@ -100,6 +121,13 @@ public class Errors {
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean addSportsVenue(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");
@@ -165,6 +193,13 @@ public class Errors {
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean addOlympicSport(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");
@@ -197,6 +232,13 @@ public class Errors {
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean addIocCode(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");
@@ -253,6 +295,12 @@ public class Errors {
                 return true;
             }
         }
+        for (int i = 0; i < ArchiveSystem.getIocCodes().size(); i++) {
+            if (ArchiveSystem.getIocCodes().get(i).getCountryName().equals(data[2])) {
+                Terminal.printError("an IOC-Code for that country already exists!");
+                return true;
+            }
+        }
         try {
             Integer.parseInt(data[3]);
         } catch (NumberFormatException e) {
@@ -270,6 +318,13 @@ public class Errors {
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean addAthlete(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");
@@ -362,6 +417,13 @@ public class Errors {
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean addCompetition(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");
@@ -487,14 +549,48 @@ public class Errors {
             Terminal.printError("the number of bronze medals must be a positive number!");
             return true;
         }
+        for (int i = 0; i < ArchiveSystem.getCompetitions().size(); i++) {
+            if (ArchiveSystem.getCompetitions().get(i).getAthlete().getId().equals(data[0])
+                    && ArchiveSystem.getCompetitions().get(i).getYear() == Integer.parseInt(data[1])
+                    && ArchiveSystem.getCompetitions().get(i).getAthlete().getIocCode().getCountryName()
+                            .equals(data[2])
+                    && ArchiveSystem.getCompetitions().get(i).getSport().getSportType().equals(data[3])
+                    && ArchiveSystem.getCompetitions().get(i).getSport().getSportDiscipline()
+                            .equals(data[4])) {
+                Terminal.printError("an athlete can only compete once in the same year for a Sport!");
+                return true;
+            }
+        }
         return false;
     }
 
-    public static boolean reset() {
-        // TODO Auto-generated method stub
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
+    public static boolean reset(String input) {
+        if (ArchiveSystem.isAdminOnline() == false) {
+            Terminal.printError("no admin is logged in!");
+            return true;
+        }
+        String[] inputParts = input.split(" ");
+        if (inputParts.length != 1) {
+            Terminal.printError("the input must contain no arguments!");
+            return true;
+        }
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean listSportsVenues(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");
@@ -506,6 +602,17 @@ public class Errors {
             return true;
         }
         boolean foundCountry = false;
+        for (int i = 0; i < ArchiveSystem.getIocCodes().size(); i++) {
+            if (ArchiveSystem.getIocCodes().get(i).getCountryName().equals(inputParts[1])) {
+                foundCountry = true;
+                break;
+            }
+        }
+        if (foundCountry == false) {
+            Terminal.printError("no countries with that name have been added!");
+            return true;
+        }
+        foundCountry = false;
         for (int i = 0; i < ArchiveSystem.getVenues().size(); i++) {
             if (ArchiveSystem.getVenues().get(i).getCountryName().equals(inputParts[1])) {
                 foundCountry = true;
@@ -519,6 +626,13 @@ public class Errors {
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean listOlympicSports(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");
@@ -532,6 +646,13 @@ public class Errors {
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean listIocCode(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");
@@ -545,6 +666,13 @@ public class Errors {
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean SummaryAthletes(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");
@@ -555,19 +683,39 @@ public class Errors {
             Terminal.printError("the input must contain arguments!");
             return true;
         }
+        char[] parts = inputParts[1].toCharArray();
+        int numberOfSemiColums = 0;
+        for (int i = 0; i < parts.length; i++) {
+            if (parts[i] == ';') {
+                numberOfSemiColums++;
+            }
+        }
+        if (numberOfSemiColums != 1) {
+            Terminal.printError("instruction must contain 2 arguments, separated by <<;>>!");
+            return true;
+        }
+        String[] data = inputParts[1].split(";");
         boolean foundSport = false;
         for (int i = 0; i < ArchiveSystem.getSports().size(); i++) {
-            if (ArchiveSystem.getSports().get(i).getSportDiscipline().equals(inputParts[1])) {
+            if (ArchiveSystem.getSports().get(i).getSportType().equals(data[0])
+                    && ArchiveSystem.getSports().get(i).getSportDiscipline().equals(data[1])) {
                 foundSport = true;
             }
         }
         if (foundSport == false) {
-            Terminal.printError("no sport with the entered discipline has been found!");
+            Terminal.printError("no sport with the entered type and discipline has been found!");
             return true;
         }
         return false;
     }
 
+    /**
+     * 
+     * @param input
+     *            represents the line entered by the user
+     * @return true, if errors have been found for the respective instruction
+     *         and false instead
+     */
     public static boolean OlympicMedalTable(String input) {
         if (ArchiveSystem.isAdminOnline() == false) {
             Terminal.printError("no admin is logged in!");

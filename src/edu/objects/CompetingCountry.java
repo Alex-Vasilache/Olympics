@@ -7,6 +7,11 @@ public class CompetingCountry implements Comparable<CompetingCountry> {
     private int bronze;
     private int medals;
 
+    /**
+     * 
+     * @param iocCode
+     *            The IOC - Code class of the competing country
+     */
     public CompetingCountry(IocCode iocCode) {
         this.iocCode = iocCode;
         this.gold = 0;
@@ -15,37 +20,72 @@ public class CompetingCountry implements Comparable<CompetingCountry> {
         this.medals = 0;
     }
 
+    /**
+     * 
+     * @return the IOC - Code class of the competing country
+     */
     public IocCode getIocCode() {
         return iocCode;
     }
 
+    /**
+     * 
+     * @return the number of gold medals
+     */
     public int getGold() {
         return gold;
     }
 
+    /**
+     * 
+     * @param gold
+     *            the number of gold medals to be added
+     */
     public void setGold(int gold) {
         this.gold = this.gold + gold;
         this.medals = this.medals + gold;
     }
 
+    /**
+     * 
+     * @return the number of silver medals
+     */
     public int getSilver() {
         return silver;
     }
 
+    /**
+     * 
+     * @param silver
+     *            the number of silver medals to be added
+     */
     public void setSilver(int silver) {
         this.silver = this.silver + silver;
         this.medals = this.medals + silver;
     }
 
+    /**
+     * 
+     * @return the number of bronze medals
+     */
     public int getBronze() {
         return bronze;
     }
 
+    /**
+     * 
+     * @param bronze
+     *            the number of bronze medals to be added
+     */
     public void setBronze(int bronze) {
         this.bronze = this.bronze + bronze;
         this.medals = this.medals + bronze;
     }
 
+    /**
+     * 
+     * @return the total number of medals
+     */
     public int getMedals() {
         return medals;
     }

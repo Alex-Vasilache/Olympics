@@ -4,15 +4,30 @@ public class Sport implements Comparable<Sport> {
     private String sportType;
     private String sportDiscipline;
 
+    /**
+     * 
+     * @param sportType
+     *            the type of the sport
+     * @param sportDiscipline
+     *            the discipline of the sport
+     */
     public Sport(String sportType, String sportDiscipline) {
         this.sportType = sportType;
         this.sportDiscipline = sportDiscipline;
     }
 
+    /**
+     * 
+     * @return the type of the sport
+     */
     public String getSportType() {
         return sportType;
     }
 
+    /**
+     * 
+     * @return the discipline of the sport
+     */
     public String getSportDiscipline() {
         return sportDiscipline;
     }

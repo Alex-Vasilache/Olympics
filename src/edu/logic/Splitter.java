@@ -6,6 +6,15 @@ import edu.objects.ArchiveSystem;
 
 public class Splitter {
 
+    /**
+     * Splits the inputed line and checks if the first word matches the
+     * instructions, in which case it tries to run that instruction. In case the
+     * instruction did not match any of the standard instructions, an error will
+     * be given
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void split(String input) {
         String[] parts = input.split(" ");
         switch (parts[0]) {
@@ -62,7 +71,7 @@ public class Splitter {
             break;
         }
         case "reset": {
-            Instructions.reset();
+            Instructions.reset(input);
             break;
         }
         case "quit": {

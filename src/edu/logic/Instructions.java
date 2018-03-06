@@ -12,6 +12,12 @@ import edu.objects.SportVenue;
 
 public class Instructions {
 
+    /**
+     * If no errors are found, the method adds a new admin to the database
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void addAdmin(String input) {
         if (Errors.addAdmin(input) == false) {
             String[] inputParts = input.split(" ");
@@ -22,6 +28,12 @@ public class Instructions {
         }
     }
 
+    /**
+     * If no errors are found, the method logs in an admin
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void loginAdmin(String input) {
         if (Errors.loginAdmin(input) == false) {
             ArchiveSystem.setAdminOnline(true);
@@ -29,6 +41,12 @@ public class Instructions {
         }
     }
 
+    /**
+     * If no errors are found, the current admin is logged out
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void logoutAdmin(String input) {
         if (Errors.logoutAdmin(input) == false) {
             ArchiveSystem.setAdminOnline(false);
@@ -36,6 +54,12 @@ public class Instructions {
         }
     }
 
+    /**
+     * If no errors are found, a new sports venue is added to the database
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void addSportsVenue(String input) {
         if (Errors.addSportsVenue(input) == false) {
             String[] inputParts = input.split(" ");
@@ -47,6 +71,12 @@ public class Instructions {
         }
     }
 
+    /**
+     * If no errors are found, a new sport is added to the database
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void addOlympicSport(String input) {
         if (Errors.addOlympicSport(input) == false) {
             String[] inputParts = input.split(" ");
@@ -57,6 +87,12 @@ public class Instructions {
         }
     }
 
+    /**
+     * If no errors are found, a new IOC - Code is added to the database
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void addIocCode(String input) {
         if (Errors.addIocCode(input) == false) {
             String[] inputParts = input.split(" ");
@@ -67,6 +103,14 @@ public class Instructions {
         }
     }
 
+    /**
+     * If no errors are found, a new athlete is added to the database. In case
+     * the athlete with the entered ID already exists and the input contains a
+     * different sport, then, the new sport is added to the existing athlete
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void addAthlete(String input) {
         if (Errors.addAthlete(input) == false) {
             String[] inputParts = input.split(" ");
@@ -103,6 +147,12 @@ public class Instructions {
         }
     }
 
+    /**
+     * If no errors are found, a new competition is added to the database
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void addCompetition(String input) {
         if (Errors.addCompetition(input) == false) {
             String[] inputParts = input.split(" ");
@@ -129,11 +179,20 @@ public class Instructions {
         }
     }
 
-    public static void reset() {
-        if (Errors.reset() == false) {
-            // TODO Auto-generated method stub
-        } else {
-            // TODO PRINT ERROR
+    /**
+     * If no errors are found, the database is reset
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
+    public static void reset(String input) {
+        if (Errors.reset(input) == false) {
+            ArchiveSystem.getVenues().clear();
+            ArchiveSystem.getSports().clear();
+            ArchiveSystem.getIocCodes().clear();
+            ArchiveSystem.getAthletes().clear();
+            ArchiveSystem.getCompetitions().clear();
+            Terminal.printLine("OK");
         }
     }
 

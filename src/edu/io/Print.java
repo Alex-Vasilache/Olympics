@@ -11,6 +11,12 @@ import edu.objects.CompetingCountry;
 
 public class Print {
 
+    /**
+     * If no errors are found, the sports venues are printed
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void listSportsVenues(String input) {
         if (Errors.listSportsVenues(input) == false) {
             int place = 0;
@@ -28,6 +34,12 @@ public class Print {
         }
     }
 
+    /**
+     * If no errors are found, the olympic sports are printed
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void listOlympicSports(String input) {
         if (Errors.listOlympicSports(input) == false) {
             Collections.sort(ArchiveSystem.getSports());
@@ -39,6 +51,12 @@ public class Print {
         }
     }
 
+    /**
+     * If no errors are found, the IOC - Codes are printed
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void listIocCode(String input) {
         if (Errors.listIocCode(input) == false) {
             Collections.sort(ArchiveSystem.getIocCodes());
@@ -52,14 +70,22 @@ public class Print {
         }
     }
 
+    /**
+     * If no errors are found, the summary for the entered sport is printed
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void SummaryAthletes(String input) {
         if (Errors.SummaryAthletes(input) == false) {
             String[] inputParts = input.split(" ");
+            String[] data = inputParts[1].split(";");
             Collections.sort(ArchiveSystem.getAthletes());
             for (int i = 0; i < ArchiveSystem.getAthletes().size(); i++) {
                 for (int j = 0; j < ArchiveSystem.getAthletes().get(i).getSports().size(); j++) {
-                    if (ArchiveSystem.getAthletes().get(i).getSports().get(j).getSportDiscipline()
-                            .equals(inputParts[1])) {
+                    if (ArchiveSystem.getAthletes().get(i).getSports().get(j).getSportType().equals(data[0])
+                            && ArchiveSystem.getAthletes().get(i).getSports().get(j).getSportDiscipline()
+                                    .equals(data[1])) {
                         String line = ArchiveSystem.getAthletes().get(i).getId() + " "
                                 + ArchiveSystem.getAthletes().get(i).getFirstName() + " "
                                 + ArchiveSystem.getAthletes().get(i).getLastName() + " "
@@ -71,6 +97,13 @@ public class Print {
         }
     }
 
+    /**
+     * If no errors are found a new list of countries is created (based on the
+     * actual competition results), then it is sorted and printed
+     * 
+     * @param input
+     *            represents the line entered by the user
+     */
     public static void OlympicMedalTable(String input) {
         if (Errors.OlympicMedalTable(input) == false) {
             List<CompetingCountry> competingCountries = new ArrayList<CompetingCountry>();
