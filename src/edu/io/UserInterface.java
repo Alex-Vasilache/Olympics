@@ -6,15 +6,15 @@ import edu.objects.ArchiveSystem;
 
 public class UserInterface {
 
-	/**
-	 * 
-	 * @param args
-	 *            Not used throughout the program
-	 */
-	public static void main(String[] args) {
+    /**
+     * 
+     * @param args
+     *            Not used throughout the program
+     */
+    public static void main(String[] args) {
 
-		while (ArchiveSystem.isEnd() == false) {
-			Splitter.split(Terminal.readLine());
-		}
-	}
+        while (ArchiveSystem.isEnd() == false) {
+            Splitter.split(Terminal.readLine());
+        }
+    }
 }

@@ -59,7 +59,7 @@ public class Splitter {
             break;
         }
         case "summary-athletes": {
-            Print.SummaryAthletes(input);
+            Print.summaryAthletes(input);
             break;
         }
         case "add-competition": {
@@ -67,7 +67,7 @@ public class Splitter {
             break;
         }
         case "olympic-medal-table": {
-            Print.OlympicMedalTable(input);
+            Print.olympicMedalTable(input);
             break;
         }
         case "reset": {
